@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Registration Page</title>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+    <style>
+      html, body {
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+      }
+      .panel {
+        width: 100%;
+        max-width: 500px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="panel panel-primary">
+          <div class="panel-heading text-center">
+            <h1>Course Registration Form</h1>
+          </div>
+          <div class="panel-body">
+            <form action="connect.php" method="post">
+              <div class="form-group">
+                <label for="fullName">Full Name</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="fullName"
+                  name="fullName"
+                />
+              </div>
+              <div class="form-group">
+                <label for="registrationNo">Registration Number</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="registrationNo"
+                  name="registrationNo"
+                />
+              </div>
+
+              <!-- Dropdown for selecting Semester -->
+              <div class="form-group">
+                <label for="semester">Semester</label>
+                <select class="form-control" id="semester" name="semester" onchange="updateCourses()">
+                  <option value="">-- Select a semester --</option>
+                  <option value="s1">S1</option>
+                  <option value="s2">S2</option>
+                  <option value="s3">S3</option>
+                  <option value="s4">S4</option>
+                  <option value="s5">S5</option>
+                  <option value="s6">S6</option>
+                  <option value="s7">S7</option>
+                  <option value="s8">S8</option>
+                </select>
+              </div>
+
+              <!-- Dropdown for dynamically updating Courses -->
+              <div class="form-group">
+                <label for="course">Courses</label>
+                <select class="form-control" id="course" name="course">
+                  <option value="">-- Select a course --</option>
+                </select>
+              </div>
+              <input type="submit" class="btn btn-primary btn-block" />
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function updateCourses() {
+        var semester = document.getElementById("semester").value;
+        var courseDropdown = document.getElementById("course");
+        courseDropdown.innerHTML = ''; // Clear previous options
+
+        var courses;
+
+        switch (semester) {
+          case "s1":
+            courses = [
+              "Engineering Mathematics I",
+              "Engineering Physics",
+              "Engineering Chemistry",
+              "Basic Electrical Engineering",
+              "Introduction to Computing"
+            ];
+            break;
+          case "s2":
+            courses = [
+              "Engineering Mathematics II",
+              "Data Structures",
+              "Digital Logic Design",
+              "Computer Programming",
+              "Environmental Science"
+            ];
+            break;
+          case "s3":
+            courses = [
+              "Discrete Mathematics",
+              "Computer Organization",
+              "Operating Systems",
+              "Database Management Systems",
+              "Design and Analysis of Algorithms"
+            ];
+            break;
+          case "s4":
+            courses = [
+              "Software Engineering",
+              "Theory of Computation",
+              "Microprocessor and Interfacing",
+              "Computer Networks",
+              "Compiler Design"
+            ];
+            break;
+          case "s5":
+            courses = [
+              "Web Technology",
+              "Mobile Application Development",
+              "Artificial Intelligence",
+              "Software Testing",
+              "Elective 1"
+            ];
+            break;
+          case "s6":
+            courses = [
+              "Operating Systems",
+              "Artificial Intelligence",
+              "Software Engineering",
+              "Foundations of Security in Computing",
+              "Foundations of Machine Learning",
+              "Data Analytics",
+              "Automated Verification",
+              "Programming in Python",
+              "Data & Computer Communication"
+            ];
+            break;
+          case "s7":
+            courses = [
+              "Machine Learning",
+              "Cloud Computing",
+              "Information Security",
+              "Compiler Design",
+              "Advanced Database Management Systems"
+            ];
+            break;
+          case "s8":
+            courses = [
+              "Project Management",
+              "Big Data",
+              "Blockchain Technology",
+              "Computer Vision",
+              "Natural Language Processing",
+              "Cyber Security"
+            ];
+            break;
+        }
+
+        // Add default option
+        var defaultOption = document.createElement("option");
+        defaultOption.value = "";
+        defaultOption.text = "-- Select a course --";
+        courseDropdown.appendChild(defaultOption);
+
+        // Add new options based on the selected semester
+        if (courses) {
+          courses.forEach(function(course) {
+            var option = document.createElement("option");
+            option.value = course.toLowerCase().replace(/ /g, "_"); // Use underscore for spaces in value
+            option.text = course;
+            courseDropdown.appendChild(option);
+          });
+        }
+      }
+    </script>
+  </body>
+</html>

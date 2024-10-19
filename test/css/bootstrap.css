@@ -1,0 +1,75 @@
+html, body {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: sans-serif;
+  margin: 0;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 80%; /* Reduced container width */
+}
+
+.panel {
+  width: 100%;
+  max-width: 500px;
+  background-color: #f9f9f9; /* Panel background */
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  padding: 20px;
+}
+
+.panel-heading {
+  background-color: #007bff; /* Panel header background */
+  color: white; /* Panel header text color */
+  padding: 15px;
+  border-radius: 8px 8px 0 0;
+  text-align: center;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.form-control {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.btn {
+  display: inline-block;
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: #0056b3;
+}
+
+.form-group.reduced-size {
+  width: 50%; /* Adjust the width as needed */
+}
+
+@media (max-width: 768px) {
+  .panel {
+    width: 90%;
+  }
+}
